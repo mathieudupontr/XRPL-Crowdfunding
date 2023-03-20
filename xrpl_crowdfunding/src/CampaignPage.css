@@ -83,30 +83,4 @@
     margin-bottom: 40px;
   }
   
-  .campaign-team {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-  
-  .campaign-team-member {
-    width: 30%;
-    margin-bottom: 40px;
-  }
-  
-  .campaign-team-member img {
-    width: 100%;
-    border-radius: 50%;
-    margin-bottom: 20px;
-  }
-  
-  .campaign-team-member h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .campaign-team-member p {
-    font-size: 18px;
-    line-height: 1.5;
-  }
   

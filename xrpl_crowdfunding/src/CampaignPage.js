@@ -23,6 +23,10 @@ function CampaignPage() {
             <h4 className="campaign-stat-label">Days left</h4>
             <p className="campaign-stat-value">14</p>
           </div>
+          <div className="campaign-stat">
+            <h4 className="campaign-stat-label">Ending Date</h4>
+            <p className="campaign-stat-value">08/14/23</p>
+          </div>
         </div>
         <button className="campaign-donate-button">Donate now</button>
       </div>
@@ -31,13 +35,11 @@ function CampaignPage() {
         <p className="campaign-section-description">Campaign Description</p>
         <h2 className="campaign-section-title">Why we need your support</h2>
         <p className="campaign-section-description">Campaign Description</p>
-        <h2 className="campaign-section-title">Our team</h2>
-        <div className="campaign-team">
-          <div className="campaign-team-member">
+        <h2 className="campaign-section-title">Milestones</h2>
+        <p className="campaign-section-description">Milestones</p>
           </div>
           </div>
-          </div>
-          </div>
+          
   )}
 
   export default CampaignPage;
