@@ -1,0 +1,58 @@
+.HomePage {
+    font-family: Arial, sans-serif;
+  }
+  
+  .hero-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    background-color: #f1f1f1;
+  }
+  
+  .hero-container h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-container p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .btn {
+    padding: 1rem 2rem;
+    border: yes;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+    background-color: #4caf50;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .btn:hover {
+    background-color: #4caf50;
+  }
+  
+  .projects-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .project-card {
+    width: 300px;
+    margin: 1rem;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+  
+  .project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
