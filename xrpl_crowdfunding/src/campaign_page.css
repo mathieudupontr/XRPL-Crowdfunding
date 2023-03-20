@@ -1,0 +1,112 @@
+.campaign-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  
+  .campaign-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .campaign-title {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  
+  .campaign-description {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 40px;
+  }
+  
+  .campaign-progress {
+    height: 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .campaign-progress-bar {
+    height: 100%;
+    background-color: #008CBA;
+    border-radius: 5px;
+  }
+  
+  .campaign-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+  
+  .campaign-stat {
+    text-align: center;
+  }
+  
+  .campaign-stat-label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .campaign-stat-value {
+    font-size: 24px;
+  }
+  
+  .campaign-donate-button {
+    background-color: #008CBA;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .campaign-donate-button:hover {
+    background-color: #006B8F;
+  }
+  
+  .campaign-body {
+    padding: 40px 20px;
+  }
+  
+  .campaign-section-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .campaign-section-description {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 40px;
+  }
+  
+  .campaign-team {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .campaign-team-member {
+    width: 30%;
+    margin-bottom: 40px;
+  }
+  
+  .campaign-team-member img {
+    width: 100%;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  
+  .campaign-team-member h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .campaign-team-member p {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  
