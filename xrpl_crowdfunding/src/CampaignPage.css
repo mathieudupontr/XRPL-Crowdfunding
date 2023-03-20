@@ -29,7 +29,7 @@
   
   .campaign-progress-bar {
     height: 100%;
-    background-color: #008CBA;
+    background-color: #11E070;
     border-radius: 5px;
   }
   
@@ -54,9 +54,9 @@
   }
   
   .campaign-donate-button {
-    background-color: #008CBA;
-    color: #fff;
-    border: none;
+    background-color: #11E070;
+    color: #000000;
+    border: yes;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
@@ -65,7 +65,7 @@
   }
   
   .campaign-donate-button:hover {
-    background-color: #006B8F;
+    background-color: #11E070;
   }
   
   .campaign-body {

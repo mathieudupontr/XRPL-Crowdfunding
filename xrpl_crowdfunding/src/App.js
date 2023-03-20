@@ -1,7 +1,10 @@
 import Navbar from "./Navbar";
+import CampaignPage from './CampaignPage';
 
 function App() {
-  return <Navbar />
+  return (
+  <CampaignPage />
+  );
 }
 
 export default App
