@@ -1,0 +1,100 @@
+* {
+	box-sizing: border-box;
+}
+
+.container {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+form {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+form > div {
+	flex: 1 1 100%;
+	margin: 10px 0;
+}
+
+form > div > label {
+	display: block;
+}
+
+form > div > input[type="text"],
+form > div > textarea,
+form > div > input[type="date"],
+form > div > input[type="number"],
+form > div > input[type="file"] {
+	display: block;
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+form > div > textarea {
+	resize: vertical;
+}
+
+form > div > input[type="file"] {
+	padding: 0;
+}
+
+#picturePreview,
+#filePreview {
+	margin-top: 10px;
+}
+
+#picturePreview > img,
+#filePreview > a {
+	display: inline-block;
+	max-width: 200px;
+	margin: 5px;
+}
+
+#milestones .milestone {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	margin: 10px 0;
+}
+
+#milestones .milestone > * {
+	flex: 1 1 100%;
+	margin: 5px 0;
+}
+
+#milestones .milestone > .milestoneDate {
+	flex: 0 0 auto;
+	width: 40%;
+}
+
+#milestones .milestone > .milestoneDescription {
+	flex: 1 1 auto;
+	width: 60%;
+}
+
+#milestones .removeMilestone {
+	margin-left: 10px;
+}
+
+form > div > button {
+	display: block;
+	margin: 20px auto 0;
+	padding: 10px 20px;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+form > div > button:hover {
+	background-color: #0069d9;
+}
+
+form > div > button:active {
+	background-color: #005cbf;
+}
