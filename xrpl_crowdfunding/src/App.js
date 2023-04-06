@@ -6,7 +6,7 @@ import CreateCampaign from "./CreateCampaign";
 
 function App() {
   return (
-  <CampaignPage />
+  <CreateCampaign />
   );
 }
 
