@@ -1,22 +1,29 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
+import { Route, Routes } from 'react-router-dom';
+import HomePage from './HomePage';
+import CampaignPage from './CampaignPage';
+
 
 function Navbar() {
   return (
+    <>
     <nav className="navbar">
-      <a href="/" className="navbar-brand">XRPL Crowdfunding</a>
+      <Link to="/homepage" className="navbar-brand">XRPL Crowdfunding</Link>
       <ul className="navbar-nav">
         <li className="nav-item">
-          <a href="/" className="nav-link">Home</a>
+          <Link to="/homepage" className="nav-link">Home</Link>
         </li>
         <li className="nav-item">
-          <a href="/how-it-works" className="nav-link">How it works</a>
+          <Link to="/createcampaign" className="nav-link">How it works</Link>
         </li>
         <li className="nav-item">
-          <a href="/login" className="nav-link">Login</a>
+          <Link to="/campaignpage" className="nav-link">Login</Link>
         </li>
       </ul>
     </nav>
+    </>
   );
 }
 
