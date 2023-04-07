@@ -1,14 +1,21 @@
 import React from "react";
+import { Link } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Navbar from "./Navbar";
 import "./HomePage.css";
+import CampaignPage from "./CampaignPage";
+import CreateCampaign from "./CreateCampaign";
 
 function HomePage() {
   return (
+    <>
     <div className="HomePage">
       <div className="hero-container">
         <h1>Help fund your favorite projects</h1>
         <p>Join the community and contribute to innovative ideas</p>
+        <Link to="/CreateCampaign">
         <button className="btn">Browse Projects</button>
+        </Link>
       </div>
       <div className="projects-container">
         <div className="project-card">
@@ -18,7 +25,9 @@ function HomePage() {
           />
           <h2>Project 1</h2>
           <p>Project Description</p>
-          <button className="btn">Contribute</button>
+          <Link to="/CampaignPage">
+          <button className="btn" >Contribute</button>
+          </Link>
         </div>
         <div className="project-card">
           <img
@@ -27,7 +36,9 @@ function HomePage() {
           />
           <h2>Project 2</h2>
           <p>Project Description</p>
-          <button className="btn">Contribute</button>
+          <Link to="/CampaignPage">
+          <button className="btn" >Contribute</button>
+          </Link>
         </div>
         <div className="project-card">
           <img
@@ -36,10 +47,17 @@ function HomePage() {
           />
           <h2>Project 3</h2>
           <p>Project Description</p>
-          <button className="btn">Contribute</button>
+          <Link to="/CampaignPage">
+          <button className="btn" >Contribute</button>
+          </Link>
         </div>
       </div>
     </div>
+    <Routes>
+      <Route path="/campaignpage" element={<CampaignPage/>} />
+      <Route path="/createcampaign" element={<CreateCampaign/>} />
+    </Routes>
+  </>
   );
 }
 

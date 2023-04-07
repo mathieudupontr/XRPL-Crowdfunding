@@ -5,7 +5,8 @@ import { Route, Routes } from 'react-router-dom';
 import HomePage from './HomePage';
 import CampaignPage from './CampaignPage';
 import CreateCampaign from './CreateCampaign';
-import Donate from './donate';
+import Donate from './Donate';
+
 
 
 function Navbar() {
