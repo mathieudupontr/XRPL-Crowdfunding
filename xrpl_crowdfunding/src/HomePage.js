@@ -5,7 +5,6 @@ import "./HomePage.css";
 function HomePage() {
   return (
     <div className="HomePage">
-      <Navbar />
       <div className="hero-container">
         <h1>Help fund your favorite projects</h1>
         <p>Join the community and contribute to innovative ideas</p>

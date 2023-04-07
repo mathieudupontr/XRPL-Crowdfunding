@@ -4,6 +4,9 @@ import './CampaignPage.css';
 function CampaignPage() {
   return (
     <div className="campaign-page">
+          <img
+            src="https://images.unsplash.com/photo-1613891188927-14c2774fb8d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+          />
       <div className="campaign-header">
         <h1 className="campaign-title">Help fund our new XRPL project!</h1>
         <p className="campaign-description">We are raising funds to build a new decentralized application on the XRPL that will revolutionize the way we transact online. With your support, we can bring this project to life!</p>

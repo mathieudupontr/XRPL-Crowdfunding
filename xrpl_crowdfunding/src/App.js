@@ -16,16 +16,7 @@ ReactDOM.render(
 
 function App() {
   return (
-    <>
-      <HomePage />
-      <div className="container">
-        <Routes>
-          <Route path="/homepage" element={<HomePage/>} />
-          <Route path="/campaignpage" element={<CampaignPage/>} />
-          <Route path="/createcampaign" element={<CreateCampaign/>} />
-        </Routes>
-      </div>
-    </>
+    <Navbar />
   );
 }
 
