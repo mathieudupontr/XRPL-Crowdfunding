@@ -1,0 +1,22 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .title {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 30px;
+  }
+  
+  .text {
+    margin-bottom: 30px;
+  }
+  
+  .image {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+  }
