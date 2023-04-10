@@ -1,5 +1,5 @@
 import React from 'react';
-import './HowItWorks.css';
+import './Howitworks.css';
 import image from './logic.jpg';
 
 function HowItWorks() {
@@ -19,4 +19,4 @@ function HowItWorks() {
   );
 }
 
-export default HowItWorks;
+export default Howitworks;
