@@ -1,60 +1,40 @@
-/* Set background color and font */
-body {
-    background-color: #f2f2f2;
-    font-family: Arial, sans-serif;
-  }
-  
-  /* Center the registration form */
-  .registration-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
-  }
-  
-  /* Style the form inputs and labels */
-  .registration-form input[type="text"],
-  .registration-form input[type="email"],
-  .registration-form input[type="password"],
-  .registration-form label {
-    display: block;
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: none;
-    border-radius: 3px;
-  }
-  
-  .registration-form label {
-    font-weight: bold;
-  }
-  
-  .registration-form input[type="submit"] {
-    background-color: #4CAF50;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-  
-  /* Style the Google Sign-In button */
-  .google-sign-in-button {
-    display: inline-block;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 2px;
-    color: #444;
-    font-size: 14px;
-    font-weight: bold;
-    padding: 10px;
-    margin-top: 20px;
-    cursor: pointer;
-  }
-  
-  .google-sign-in-button:hover {
-    background-color: #eee;
-  }
+/* Style the Google Sign-In button */
+#google-signin-button {
+  display: inline-block;
+  background-color: #fff;
+  color: #757575;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #757575;
+  border-radius: 2px;
+  padding: 10px 16px;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out;
+}
+
+/* On hover, darken the text color and border color of the button */
+#google-signin-button:hover {
+  color: #fff;
+  border-color: #4285f4;
+  background-color: #4285f4;
+}
+
+/* On active, darken the background color of the button */
+#google-signin-button:active {
+  background-color: #3367d6;
+}
+
+/* On focus, outline the button */
+#google-signin-button:focus {
+  outline: none;
+}
+
+/* Center the Google Sign-In button */
+.google-signin-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
