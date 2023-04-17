@@ -1,65 +1,75 @@
-// Client ID and API key from the Developer Console
-const CLIENT_ID = 'YOUR_CLIENT_ID';
-const API_KEY = 'YOUR_API_KEY';
+// Load the Google API client library.
+gapi.load('client:auth2', initAuth);
 
-// Array of API discovery doc URLs for APIs used by the quickstart
-const DISCOVERY_DOCS = [
-  'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'
-];
-
-// Authorization scopes required by the API; multiple scopes can be included, separated by spaces.
-const SCOPES = 'https://www.googleapis.com/auth/calendar.readonly';
-
-/**
- *  On load, called to load the auth2 library and API client library.
- */
-function handleClientLoad() {
-  gapi.load('client:auth2', initClient);
-}
-
-/**
- *  Initializes the API client library and sets up sign-in state listeners.
- */
-function initClient() {
+// Initialize the Google Sign-In API.
+function initAuth() {
   gapi.client.init({
-    apiKey: API_KEY,
-    clientId: CLIENT_ID,
-    discoveryDocs: DISCOVERY_DOCS,
-    scope: SCOPES
+    apiKey: 'YOUR_API_KEY',
+    clientId: 'YOUR_CLIENT_ID',
+    scope: 'profile email',
   }).then(function () {
     // Listen for sign-in state changes.
     gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
 
     // Handle the initial sign-in state.
     updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-  }, function (error) {
-    console.error(JSON.stringify(error, null, 2));
   });
 }
-
-/**
- *  Called when the signed in status changes, to update the UI appropriately.
- */
+// Update the UI based on the user's sign-in status.
 function updateSigninStatus(isSignedIn) {
   if (isSignedIn) {
-    // User is signed in, show relevant UI elements
-    // and send user data to server for creator registration.
-    const profile = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile();
-    const email = profile.getEmail();
-    const name = profile.getName();
-    const token = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().id_token;
-
-    // Send data to server for creator registration.
-    registerCreator(email, name, token);
+    // The user is signed in.
+    var profile = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile();
+    var accessToken = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
+    
+    // Use the profile and access token to authenticate the user on your server.
+    authenticateUser(profile.getId(), accessToken);
   } else {
-    // User is not signed in, hide relevant UI elements.
+    // The user is not signed in.
+    // Show the Google Sign-In button.
+    renderButton();
   }
 }
 
-/**
- *  Send data to server for creator registration.
- */
-function registerCreator(email, name, token) {
-  // Send data using fetch() or jQuery.ajax()
-  // ...
+// Render the Google Sign-In button.
+function renderButton() {
+  gapi.signin2.render('google-signin-button', {
+    'scope': 'profile email',
+    'width': 240,
+    'height': 50,
+    'longtitle': true,
+    'theme': 'dark',
+    'onsuccess': onSignIn,
+  });
+}
+
+// Handle a successful Google Sign-In.
+function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  var accessToken = googleUser.getAuthResponse().access_token;
+
+  // Use the profile and access token to authenticate the user on your server.
+  authenticateUser(profile.getId(), accessToken);
+}
+
+// Send the user's profile ID and access token to your server for authentication.
+function authenticateUser(profileId, accessToken) {
+  // Send an AJAX request to your server to authenticate the user.
+  // Replace "YOUR_SERVER_URL" with the URL of your server authentication endpoint.
+  $.ajax({
+    url: 'YOUR_SERVER_URL',
+    type: 'POST',
+    data: {
+      profile_id: profileId,
+      access_token: accessToken,
+    },
+    success: function (response) {
+      // Handle the server response.
+      console.log(response);
+    },
+    error: function (xhr, status, error) {
+      // Handle the error.
+      console.error(error);
+    },
+  });
 }
