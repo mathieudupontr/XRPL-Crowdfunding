@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import { Route, Routes } from 'react-router-dom';
-import Navbar from "./Navbar";
 import "./HomePage.css";
 import CampaignPage from "./CampaignPage";
 import CreateCampaign from "./CreateCampaign";
@@ -14,7 +13,7 @@ function HomePage() {
         <h1>Help fund your favorite projects</h1>
         <p>Join the community and contribute to innovative ideas</p>
         <Link to="/CreateCampaign">
-        <button className="btn">Browse Projects</button>
+        <button className="btn">Create Campaign</button>
         </Link>
       </div>
       <div className="projects-container">

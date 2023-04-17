@@ -8,8 +8,6 @@
   display: block;
   }
   
-  This will hide the instructions by default, but display them only when the "No" button is selected. You can add this to the existing code by modifying the "Vote.css" file as follows:
-  
   .vote-page {
   display: flex;
   flex-direction: column;

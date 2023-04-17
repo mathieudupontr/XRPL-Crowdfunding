@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import "./Vote.css";
 
 const exampleCampaign = {
-  title: "Example Campaign",
+  title: "Project 1",
   description: "This is an example campaign for testing purposes",
-  amountRaised: "$1000",
-  backers: "50"
+  amountRaised: "37,500 XRP",
+  backers: "52"
 };
 
 function Vote() {
@@ -19,7 +19,7 @@ function Vote() {
     <div className="vote-page">
       <div className="project-info">
         <h1>{exampleCampaign.title}</h1>
-        <img src="https://source.unsplash.com/random/400x400" alt="Project" />
+        <img src="https://images.unsplash.com/photo-1613891188927-14c2774fb8d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Project" />
         <p>{exampleCampaign.description}</p>
         <p>Amount raised: {exampleCampaign.amountRaised}</p>
         <p>Backers: {exampleCampaign.backers}</p>
