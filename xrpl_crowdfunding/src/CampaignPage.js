@@ -1,24 +1,36 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Route, Routes } from 'react-router-dom';
 import './CampaignPage.css';
 import Donate from './Donate';
 import Vote from './Vote';
+import { viewCampaigns } from "./util/apiRequests.mjs";
 
 function CampaignPage() {
+  const [campaigns, setCampaigns] = useState()
+
+  useEffect(() => {
+    viewCampaigns().then((campaigns) => {
+      setCampaigns(campaigns)
+      console.log(campaigns)
+    })
+  }, [])
+
   return (
     <>
     <div className="campaign-page">
-          <img
-            src="https://images.unsplash.com/photo-1613891188927-14c2774fb8d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-            alt="campaign"
-          />
+      {campaigns && campaigns.map((campaign) => ( 
+        <div key={campaign.id}> 
+        <img
+          src="https://images.unsplash.com/photo-1613891188927-14c2774fb8d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+          alt={campaign.title}
+        />
       <div className="campaign-header">
-        <h1 className="campaign-title">Help fund our new XRPL project!</h1>
-        <p className="campaign-description">We are raising funds to build a new decentralized application on the XRPL that will revolutionize the way we transact online. With your support, we can bring this project to life!</p>
+        <h1 className="campaign-title">{campaign.title}</h1>
+        <p className="campaign-description">{campaign.description}</p>
         <div className="campaign-progress">
-          <div className="campaign-progress-bar" style={{width: '75%'}}></div>
-        </div>
+        <div className="campaign-progress-bar" style={{width: '75%'}}></div>
+      </div>
         <div className="campaign-stats">
           <div className="campaign-stat">
             <h4 className="campaign-stat-label">Goal</h4>
@@ -53,11 +65,13 @@ function CampaignPage() {
         <p className="campaign-section-description">Milestones</p>
       </div>
       </div>
+      ))}
+    </div>
         <Routes>
           <Route path="/donate" element={<Donate/>} />
           <Route path="/vote" element={<Vote/>} />
         </Routes>
-      </>     
+      </>      
   )}
 
   export default CampaignPage;
