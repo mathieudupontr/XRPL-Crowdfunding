@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { getCampaignById } from "./util/apiRequests.mjs";
+import { convertDropsToXrpFormat } from "./util/xrplUtil.js";
 import "./Vote.css";
-
-const exampleCampaign = {
-  title: "Project 1",
-  description: "This is an example campaign for testing purposes",
-  amountRaised: "37,500 XRP",
-  backers: "52"
-};
 
 function Vote() {
   const [vote, setVote] = useState(null);
+  const [campaign, setCampaign] = useState();
+  const { campaignId } = useParams(); // Get the campaign ID from the URL
+
+  useEffect(() => {
+    getCampaignById(campaignId).then((campaignResponse) => {
+      setCampaign(campaignResponse)
+    })
+  }, [])
 
   const handleVote = (vote) => {
     setVote(vote);
@@ -17,51 +21,58 @@ function Vote() {
 
   return (
     <div className="vote-page">
-      <div className="project-info">
-        <h1>{exampleCampaign.title}</h1>
-        <img src="https://images.unsplash.com/photo-1613891188927-14c2774fb8d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Project" />
-        <p>{exampleCampaign.description}</p>
-        <p>Amount raised: {exampleCampaign.amountRaised}</p>
-        <p>Backers: {exampleCampaign.backers}</p>
-      </div>
-      <div className="vote">
-        {vote === null ? (
+      {
+        campaign &&
+        (
           <>
-            <h2>Do you want to continue to fund this project?</h2>
-            <div className="vote-options">
-              <button
-                className="vote-option vote-option-yes"
-                onClick={() => handleVote(true)}
-              >
-                <div className="vote-option-circle">
-                  <i className="fas fa-thumbs-up"></i>
-                </div>
-                <p>Yes, I want to continue</p>
-              </button>
-              <button
-                className="vote-option vote-option-no"
-                onClick={() => handleVote(false)}
-              >
-                <div className="vote-option-circle">
-                  <i className="fas fa-thumbs-down"></i>
-                </div>
-                <p>No, I want to exit</p>
-              </button>
-            </div>
-          </>
-        ) : vote === true ? (
-          <h2>Thank you for your support!</h2>
-        ) : (
-          <div className="claim-instructions">
-            <h2>Instructions:</h2>
-            <p>
-              To claim your money, you should open your XRPL Wallet and enter the
-              destination tag below. The funds will be immediately credited to
-              your account.
-            </p>
+          <div className="project-info">
+            <h1>{campaign.title}</h1>
+            <img src={campaign.imageUrl} alt={campaign.title} />
+            <p>{campaign.description}</p>
+            <p>Amount raised: {convertDropsToXrpFormat(campaign.totalAmountRaisedInDrops)}</p>
+            <p>Backers: {campaign.backers.length}</p>
           </div>
-        )}
-      </div>
+          <div className="vote">
+            {vote === null ? (
+              <>
+                <h2>Do you want to continue to fund this project?</h2>
+                <div className="vote-options">
+                  <button
+                    className="vote-option vote-option-yes"
+                    onClick={() => handleVote(true)}
+                  >
+                    <div className="vote-option-circle">
+                      <i className="fas fa-thumbs-up"></i>
+                    </div>
+                    <p>Yes, I want to continue</p>
+                  </button>
+                  <button
+                    className="vote-option vote-option-no"
+                    onClick={() => handleVote(false)}
+                  >
+                    <div className="vote-option-circle">
+                      <i className="fas fa-thumbs-down"></i>
+                    </div>
+                    <p>No, I want to exit</p>
+                  </button>
+                </div>
+              </>
+            ) : vote === true ? (
+              <h2>Thank you for your support!</h2>
+            ) : (
+              <div className="claim-instructions">
+                <h2>Instructions:</h2>
+                <p>
+                  To claim your money, you should open your XRPL Wallet and enter the
+                  destination tag below. The funds will be immediately credited to
+                  your account.
+                </p>
+              </div>
+            )}
+          </div>
+        </>
+      )
+    }
     </div>
   );
 }

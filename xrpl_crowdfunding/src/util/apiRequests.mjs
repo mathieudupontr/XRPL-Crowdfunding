@@ -2,6 +2,46 @@ import axios from 'axios'
 
 const API_URL = 'http://localhost:3001';
 
+export async function createUser(username, password) {
+  return new Promise((resolve, reject) => {
+    const body = {
+      username,
+      password,
+    }    
+    axios
+      .post(`${API_URL}/users/create`, body)
+      .then((response) => {
+        if (response.status < 200 || response.status > 299) {
+          reject(response.data.error)
+        }
+        resolve(response.data)
+      })
+      .catch((error) => {
+        reject(error.response.data)
+      })
+  })
+}
+
+export async function login(username, password) {
+  return new Promise((resolve, reject) => {
+    const body = {
+      username,
+      password
+    }    
+    axios
+      .post(`${API_URL}/users/login`, body)
+      .then((response) => {
+        if (response.status < 200 || response.status > 299) {
+          reject(response.data.error)
+        }
+        resolve(response.data)
+      })
+      .catch((error) => {
+        reject(error.response.data)
+      })
+  })
+}
+
 export async function viewCampaigns() {
   return new Promise((resolve, reject) => {
     axios
@@ -13,7 +53,7 @@ export async function viewCampaigns() {
         resolve(response.data)
       })
       .catch((error) => {
-        throw new Error(error.response.data)
+        reject(error.response.data)
       })
   })
 }
@@ -34,7 +74,7 @@ export async function getCampaignById(campaignId) {
         resolve(response.data)
       })
       .catch((error) => {
-        throw new Error(error.response.data)
+        reject(error.response.data)
       })
   })
 }
@@ -55,7 +95,7 @@ export async function getCreateCampaignDepositFee() {
         resolve(response.data)
       })
       .catch((error) => {
-        throw new Error(error.response.data)
+        reject(error.response.data)
       })
   })
 }
@@ -76,7 +116,7 @@ export async function getFundCampaignDepositFee() {
         resolve(response.data)
       })
       .catch((error) => {
-        throw new Error(error.response.data)
+        reject(error.response.data)
       })
   })
 }
@@ -99,6 +139,7 @@ export async function createCampaign(
   title,
   description,
   overviewUrl,
+  imageUrl,
   fundRaiseGoalInDrops,
   fundRaiseEndDateInUnixSeconds,
   milestones
@@ -110,6 +151,7 @@ export async function createCampaign(
       title,
       description,
       overviewUrl,
+      imageUrl,
       fundRaiseGoalInDrops,
       fundRaiseEndDateInUnixSeconds,
       milestones,
@@ -123,7 +165,7 @@ export async function createCampaign(
         resolve(response.data)
       })
       .catch((error) => {
-        throw new Error(error.response.data)
+        reject(error.response.data)
       })
   })
 }
@@ -151,7 +193,7 @@ export async function fundCampaign(
         resolve(response.data)
       })
       .catch((error) => {
-        throw new Error(error.response.data)
+        reject(error.response.data)
       })
   })
 }
@@ -182,7 +224,7 @@ export async function voteReject(
         resolve(response.data)
       })
       .catch((error) => {
-        throw new Error(error.response.data)
+        reject(error.response.data)
       })
   })
 }
@@ -213,7 +255,7 @@ export async function voteApprove(
         resolve(response.data)
       })
       .catch((error) => {
-        throw new Error(error.response.data)
+        reject(error.response.data)
       })
   })
 }
@@ -244,7 +286,7 @@ export async function requestRefundPayment(
         resolve(response.data)
       })
       .catch((error) => {
-        throw new Error(error.response.data)
+        reject(error.response.data)
       })
   })
 }
@@ -275,7 +317,7 @@ export async function requestMilestonePayoutPayment(
         resolve(response.data)
       })
       .catch((error) => {
-        throw new Error(error.response.data)
+        reject(error.response.data)
       })
   })
 }

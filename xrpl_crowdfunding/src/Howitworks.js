@@ -1,11 +1,11 @@
 import React from 'react';
-import './Howitworks.css';
+import './HowItWorks.css';
 import image from './howitworks_visual.png';
 
 function Howitworks() {
   return (
     <div className="container">
-      <h1 className="title">How it works</h1>
+      <h1 className="title">How It Works</h1>
       <img className="image" src={image} alt="existing_image" />
       <div className="text">
         <p>• Creators set funding goals, duration, and milestones on XRPL Crowdfunding.</p>

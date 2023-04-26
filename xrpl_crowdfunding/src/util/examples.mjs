@@ -33,6 +33,7 @@ createCampaign(
   'OFF-LEDGER DATA',
   'OFF-LEDGER DATA',
   'OFF-LEDGER DATA',
+  'OFF-LEDGER DATA',
   '100000000',
   '1684092168',
   [

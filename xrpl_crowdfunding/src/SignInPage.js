@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
-import './login.css';
+import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './SignInPage.css';
+import { createUser, login } from './util/apiRequests.mjs';
+import { UserContext } from './UserProvider';
 
 function SignInPage() {
+  const { setUser } = useContext(UserContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -13,16 +18,38 @@ function SignInPage() {
     setPassword(event.target.value);
   };
 
-  const handleSignIn = (event) => {
+  const handleSignIn = async (event) => {
     event.preventDefault();
     // Handle sign-in logic here, such as making a request to an API
     console.log('Signing in with:', email, password);
+
+    try {
+      const loginResponse = await login(email, password);
+      const wallet = loginResponse.wallet;
+
+      // Navigate to the home page
+      setUser({ username: email, wallet })
+      navigate('/');
+    } catch (error) {
+      if (error.includes("User doesn't exist")) {
+        alert('User does not exist. Please create an account.')
+      } else {
+        throw new Error(error)
+      }
+    }
   };
 
-  const handleCreateAccount = (event) => {
+  const handleCreateAccount = async (event) => {
     event.preventDefault();
     // Handle create account logic here, such as navigating to a different page
     console.log('Creating account');
+
+    const createUserResponse = await createUser(email, password);
+    const wallet = createUserResponse.wallet;
+
+    // Navigate to the home page
+    setUser({ username: email, wallet })
+    navigate('/');
   };
 
   return (
