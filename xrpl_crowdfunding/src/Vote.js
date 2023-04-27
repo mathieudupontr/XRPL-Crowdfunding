@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useContext, useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { UserContext } from "./UserProvider";
 import { getCampaignById } from "./util/apiRequests.mjs";
 import { convertDropsToXrpFormat } from "./util/xrplUtil.js";
 import "./Vote.css";
@@ -8,8 +9,14 @@ function Vote() {
   const [vote, setVote] = useState(null);
   const [campaign, setCampaign] = useState();
   const { campaignId } = useParams(); // Get the campaign ID from the URL
+  const { user } = useContext(UserContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (!user) {
+      navigate('/login');
+    }
+
     getCampaignById(campaignId).then((campaignResponse) => {
       setCampaign(campaignResponse)
     })
