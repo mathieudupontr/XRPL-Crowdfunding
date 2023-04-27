@@ -1,8 +1,21 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import { UserContext } from "./UserProvider";
 import './CreateCampaign.css';
 
 function CreateCampaign() {
   const [milestones, setMilestones] = useState([]);
+  const { user } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log('user:')
+    console.log(user)
+
+    if (!user) {
+      navigate('/login');
+    }
+  }, [])
 
   const addMilestoneField = () => {
     setMilestones([...milestones, { date: '', description: '' }]);
