@@ -8,7 +8,7 @@ import './CampaignPage.css';
 function CampaignPage() {
   const [campaign, setCampaign] = useState();
   const { campaignId } = useParams(); // Get the campaign ID from the URL
-
+  
   useEffect(() => {
     getCampaignById(campaignId).then((campaignResponse) => {
       setCampaign(campaignResponse)
@@ -30,7 +30,7 @@ function CampaignPage() {
           <p className="campaign-description">{campaign.description}</p>
           <h2 className="campaign-state">Status: {campaign.state}</h2>
           <div className="campaign-progress">
-          <div className="campaign-progress-bar" style={{width: '75%'}}></div>
+          <div className="campaign-progress-bar" style={{width: (campaign.totalAmountRaisedInDrops/campaign.fundRaiseGoalInDrops)*100+'%'}}></div>
         </div>
           <div className="campaign-stats">
             <div className="campaign-stat">

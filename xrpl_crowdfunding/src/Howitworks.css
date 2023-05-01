@@ -7,11 +7,11 @@
   .title {
     text-align: center;
     font-size: 3rem;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
   }
   
   .text {
-    margin-bottom: 30px;
+    margin-bottom: -40px;
   }
   
   .image {
