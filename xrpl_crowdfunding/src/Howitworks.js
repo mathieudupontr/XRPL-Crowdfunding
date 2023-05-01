@@ -1,5 +1,5 @@
 import React from 'react';
-import './HowItWorks.css';
+import './Howitworks.css';
 import image from './howitworks_visual.png';
 
 function Howitworks() {
