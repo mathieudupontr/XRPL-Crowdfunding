@@ -17,7 +17,7 @@ export const Page = () => {
         <Navbar />
         <Routes>
           <Route path="/login" element={<SignInPage />} />
-          <Route path="/how-it-works" element={<HowItworks/>} />
+          <Route path="/how-it-works" element={<Howitworks/>} />
           <Route path="/create-campaign" element={<CreateCampaign />} />
           <Route path="/campaign/:campaignId" element={<CampaignPage/>} />
           <Route path="/campaign/:campaignId/donate" element={<Donate/>} />
