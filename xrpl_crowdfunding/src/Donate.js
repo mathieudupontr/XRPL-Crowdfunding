@@ -1,13 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { UserContext } from "./UserProvider";
 import { getCampaignById } from "./util/apiRequests.mjs";
 import './Donate.css';
 
 function Donate() {
   const [campaign, setCampaign] = useState();
   const { campaignId } = useParams(); // Get the campaign ID from the URL
+  const { user } = useContext(UserContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (!user) {
+      navigate('/login');
+    }
+
     getCampaignById(campaignId).then((campaignResponse) => {
       setCampaign(campaignResponse)
     })

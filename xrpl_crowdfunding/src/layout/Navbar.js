@@ -1,12 +1,35 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { UserContext } from "../UserProvider";
 import './Navbar.css';
 
 function Navbar() {
+  const { user } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/login');
+    }
+  }, [])
+
   return (
     <nav className="navbar">
       <Link to="/homepage" className="navbar-brand">XRPL Crowdfunding</Link>
       <ul className="navbar-nav">
+        {
+          user &&
+          (
+            <>
+              <li className="nav-item">
+                <span>{user.username}</span>
+              </li>
+              <li className="nav-item">
+                <span>{user.wallet.classicAddress}</span>
+              </li>
+            </>
+          )
+        }
         <li className="nav-item">
           <Link to="/homepage" className="nav-link">Home</Link>
         </li>

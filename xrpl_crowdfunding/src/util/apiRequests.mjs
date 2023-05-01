@@ -128,10 +128,11 @@ export async function getFundCampaignDepositFee() {
  * @param {string} title 
  * @param {string} description 
  * @param {string} overviewUrl 
+ * @param {string} imageUrl
  * @param {string} fundRaiseGoalInDrops 
  * @param {string} fundRaiseEndDateInUnixSeconds 
  * @param {Array<{endDateInUnixSeconds: string, title: string, payoutPercent: number}>} milestones 
- * @returns 
+ * @returns {{campaignId: number}} result
  */
 export async function createCampaign(
   ownerSeed,
