@@ -70,10 +70,12 @@ function Vote() {
               <div className="claim-instructions">
                 <h2>Instructions:</h2>
                 <p>
-                  To claim your money, you should open your XRPL Wallet and enter the
+                  To claim your money, you should open your XRPL Wallet and enter the address and the
                   destination tag below. The funds will be immediately credited to
                   your account.
                 </p>
+                <p>XRP address of the campaign: rDzTZxa7NwD9vmNf5dvTbW4FQDNSRsfPv6</p>
+                <p> Destination tag: {campaignId}</p>
               </div>
             )}
           </div>

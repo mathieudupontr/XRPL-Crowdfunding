@@ -27,6 +27,12 @@ function CreateCampaign() {
     setMilestones(newMilestones);
   };
 
+  const handleMilestonePayoutChange = (index, event) => {
+    const newMilestones = [...milestones];
+    newMilestones[index].payoutPercent = event.target.value;
+    setMilestones(newMilestones);
+  };
+
   const handleMilestoneDescriptionChange = (index, event) => {
     const newMilestones = [...milestones];
     newMilestones[index].description = event.target.value;
@@ -47,6 +53,13 @@ function CreateCampaign() {
         name={`milestoneDate-${index}`}
         value={milestone.date}
         onChange={(event) => handleMilestoneDateChange(index, event)}
+      />
+      <label htmlFor={`milestonePayout-${index}`}>Milestone Payout Percent</label>
+      <input
+        id={`milestonePayout-${index}`}
+        name={`milestonePayout-${index}`}
+        value={milestone.payoutPercent}
+        onChange={(event) => handleMilestonePayoutChange(index, event)}
       />
       <label htmlFor={`milestoneDescription-${index}`}>Milestone Description</label>
       <textarea

@@ -5,6 +5,7 @@ import { convertDropsToXrpFormat } from "./util/xrplUtil.js";
 import { convertUnixSecondsToDate } from "./util/dateUtil.js";
 import './CampaignPage.css';
 
+
 function CampaignPage() {
   const [campaign, setCampaign] = useState();
   const { campaignId } = useParams(); // Get the campaign ID from the URL
@@ -14,6 +15,15 @@ function CampaignPage() {
       setCampaign(campaignResponse)
     })
   }, [])
+
+  function daysLeftBeforeEndOfCampaign(endDateInUnixSeconds) {
+    const endDate = new Date(convertUnixSecondsToDate(endDateInUnixSeconds)); // Convert Unix timestamp to JavaScript Date object
+    const now = new Date(); // Get current date
+    const timeDiffInMs = endDate.getTime() - now.getTime(); // Calculate time difference in milliseconds
+    const timeDiffInDays = Math.ceil(timeDiffInMs / (1000 * 60 * 60 * 24)); // Convert milliseconds to days and round up
+    return timeDiffInDays > 0 ? timeDiffInDays : 0; // Return time difference in days if positive, otherwise 0
+  }
+
 
   return (
     <div className="campaign-page">
@@ -43,7 +53,7 @@ function CampaignPage() {
             </div>
             <div className="campaign-stat">
               <h4 className="campaign-stat-label">Days left</h4>
-              <p className="campaign-stat-value">14</p>
+              <p className="campaign-stat-value">{daysLeftBeforeEndOfCampaign(campaign.fundRaiseEndDateInUnixSeconds)}</p>
             </div>
             <div className="campaign-stat">
               <h4 className="campaign-stat-label">Ending Date</h4>
@@ -61,8 +71,9 @@ function CampaignPage() {
           <h2 className="campaign-section-title">Our project</h2>
           <p className="campaign-section-description">{campaign.description}</p>
           <h2 className="campaign-section-title">Milestones</h2>
+          <div className="projects-container">
           {campaign.milestones.map((milestone, index) => (
-            <div key={index} className="campaign-milestone campaign-section-description">
+            <div key={index} className="project-card">
               <h3 className="campaign-milestone-title">{index + 1}. {milestone.title}</h3>
               <p className="campaign-milestone-description">{milestone.description}</p>
               <div className="campaign-milestone-stats">
@@ -81,6 +92,7 @@ function CampaignPage() {
               </div>
             </div>
           ))}
+        </div>
         </div>
         </div>
         )}

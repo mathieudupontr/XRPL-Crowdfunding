@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './SignInPage.css';
 import { createUser, login } from './util/apiRequests.mjs';
 import { UserContext } from './UserProvider';
+import image from './ledger_logo.png';
 
 function SignInPage() {
   const { setUser } = useContext(UserContext);
@@ -53,8 +54,16 @@ function SignInPage() {
   };
 
   return (
-    <div>
-      <h1>Sign in</h1>
+    <>
+    <div className="HomePage">
+      <div className="hero-container1">
+        <h1>Welcome on the XRPL Crowdfunding Platform</h1>
+        <p>Join the community and contribute to innovative ideas</p>
+        <div className="container">
+        <img className="image" src={image} alt="existing_image" />
+        </div>
+      </div>
+      <div className="projects-container">
       <form onSubmit={handleSignIn}>
         <label>
           Email:
@@ -69,7 +78,9 @@ function SignInPage() {
         <button type="submit">Sign in</button>
       </form>
       <button onClick={handleCreateAccount}>Create account</button>
+      </div>
     </div>
+  </>
   );
 }
 
